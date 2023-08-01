@@ -17,7 +17,8 @@ numContainer.addEventListener('click', function (e) {
 });
 
 oppContainer.addEventListener('click', function (e) {
-    operator = e.target.innerHTML
+    if (!operator)
+        operator = e.target.innerHTML
 });
 
 equal.addEventListener('click', () => {
@@ -39,14 +40,30 @@ function multiplication(a, b) {
     return product = a * b
 }
 function operate(firstNum, opp, secondNum) {
-    if (opp == "+")
+    if (opp == "+") {
         finalValue = (addition(firstNum, secondNum))
-    if (opp == "-")
+        firstNumber = finalValue
+        secondNumber = ""
+        operator = undefined
+    }
+    if (opp == "-") {
         finalValue = subtraction(firstNum, secondNum)
-    if (opp == "/")
+        firstNumber = finalValue
+        secondNumber = ""
+        operator = undefined
+    }
+    if (opp == "/") {
         finalValue = division(firstNum, secondNum)
-    if (opp == "*")
+        firstNumber = finalValue
+        secondNumber = ""
+        operator = undefined
+    }
+    if (opp == "*") {
         finalValue = multiplication(firstNum, secondNum)
+        firstNumber = finalValue
+        secondNumber = ""
+        operator = undefined
+    }
 }
 function reset() {
     firstNumber = ""
@@ -57,6 +74,7 @@ function reset() {
 function doStuff() {
     console.log("firstNumber " + firstNumber);
     console.log("secondNumber " + secondNumber);
-    console.log("finalValue " + finalValue)
+    console.log("finalValue " + finalValue);
+    console.log("operator " + operator);
 }
 setInterval(doStuff, 3000);
