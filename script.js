@@ -1,9 +1,18 @@
-let firstNumber = undefined
+let firstNumber = ""
 let operator = undefined
-let secondNumber = undefined
+let secondNumber = ""
 
+const numContainer = document.querySelector('.digit-buttons');
+const oppContainer=document.querySelector('.function-buttons')
 
-
+numContainer.addEventListener('click', function (e) {
+    if (!operator)
+        firstNumber = firstNumber + e.target.innerHTML
+    else secondNumber = secondNumber + e.target.innerHTML
+});
+oppContainer.addEventListener('click', function (e) {
+    operator=e.target.innerHTML
+});
 function addition(a, b) {
     sum = a + b
 }
@@ -27,3 +36,8 @@ function operate(firstNum, opp, secondNum) {
         multiplication(firstNum, secondNum)
 
 }
+function doStuff() {
+    console.log("firstNumber " + firstNumber);
+    console.log("secondNumber " + secondNumber);
+}
+setInterval(doStuff, 5000);
