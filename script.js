@@ -6,7 +6,7 @@ const numContainer = document.querySelector('.digit-buttons');
 const oppContainer = document.querySelector('.operator-buttons')
 const equal = document.querySelector('#equal')
 numContainer.addEventListener('click', function (e) {
-    if (!operator) {
+    if ((!operator)) {
         firstNumber = firstNumber + e.target.innerHTML
         firstNumber = parseInt(firstNumber)
     }
@@ -17,14 +17,19 @@ numContainer.addEventListener('click', function (e) {
 });
 
 oppContainer.addEventListener('click', function (e) {
-    if (!operator)
+    if ((!operator)&&(firstNumber != "")) {
         operator = e.target.innerHTML
+    }
+    if ((firstNumber != "") && (secondNumber != "") && (operator != undefined)) {
+        operate(firstNumber, operator, secondNumber)
+        operator = e.target.innerHTML
+    }
 });
 
 equal.addEventListener('click', () => {
     if ((firstNumber && secondNumber) != (""))
-
         operate(firstNumber, operator, secondNumber)
+    // operator = undefined;
 });
 
 function addition(a, b) {
@@ -44,25 +49,25 @@ function operate(firstNum, opp, secondNum) {
         finalValue = (addition(firstNum, secondNum))
         firstNumber = finalValue
         secondNumber = ""
-        operator = undefined
+
     }
     if (opp == "-") {
         finalValue = subtraction(firstNum, secondNum)
         firstNumber = finalValue
         secondNumber = ""
-        operator = undefined
+
     }
     if (opp == "/") {
         finalValue = division(firstNum, secondNum)
         firstNumber = finalValue
         secondNumber = ""
-        operator = undefined
+
     }
     if (opp == "*") {
         finalValue = multiplication(firstNum, secondNum)
         firstNumber = finalValue
         secondNumber = ""
-        operator = undefined
+
     }
 }
 function reset() {
