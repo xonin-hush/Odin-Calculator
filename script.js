@@ -38,7 +38,7 @@ function multiplication(a, b) {
 }
 function operate(firstNum, opp, secondNum) {
     if (opp == "+")
-        console.log(addition(firstNum, secondNum))
+        finalValue=(addition(firstNum, secondNum))
     if (opp == "-")
         finalValue = subtraction(firstNum, secondNum)
     if (opp == "/")
