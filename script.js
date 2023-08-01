@@ -15,55 +15,59 @@ numContainer.addEventListener('click', function (e) {
         secondNumber = parseInt(secondNumber)
     }
 });
-
 oppContainer.addEventListener('click', function (e) {
-    if ((!operator)&&(firstNumber != "")) {
+    if ((!operator) && (firstNumber !== "")) {
         operator = e.target.innerHTML
     }
-    if ((firstNumber != "") && (secondNumber != "") && (operator != undefined)) {
+    if ((firstNumber !== "") && (secondNumber !== "") && (operator !== undefined)) {
         operate(firstNumber, operator, secondNumber)
         operator = e.target.innerHTML
     }
 });
 
 equal.addEventListener('click', () => {
-    if ((firstNumber && secondNumber) != (""))
+    if ((firstNumber !== "") && (secondNumber !== "")) {
         operate(firstNumber, operator, secondNumber)
-    // operator = undefined;
+        operator = undefined;
+    }
 });
 
 function addition(a, b) {
-    return sum = a + b
+    return sum = a + b;
 }
 function subtraction(a, b) {
-    return sub = a - b
+    return sub = a - b;
 }
 function division(a, b) {
-    return product = a / b
+    if (b === 0)
+        alert("bruh")
+    else {
+        return product = a / b;
+    }
+
 }
 function multiplication(a, b) {
-    return product = a * b
+    return product = a * b;
 }
 function operate(firstNum, opp, secondNum) {
-    if (opp == "+") {
+    if (opp === "+") {
         finalValue = (addition(firstNum, secondNum))
         firstNumber = finalValue
         secondNumber = ""
 
     }
-    if (opp == "-") {
+    if (opp === "-") {
         finalValue = subtraction(firstNum, secondNum)
         firstNumber = finalValue
         secondNumber = ""
 
     }
-    if (opp == "/") {
+    if (opp === "/") {
         finalValue = division(firstNum, secondNum)
         firstNumber = finalValue
         secondNumber = ""
-
     }
-    if (opp == "*") {
+    if (opp === "*") {
         finalValue = multiplication(firstNum, secondNum)
         firstNumber = finalValue
         secondNumber = ""
