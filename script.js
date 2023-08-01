@@ -15,6 +15,7 @@ numContainer.addEventListener('click', function (e) {
         secondNumber = parseInt(secondNumber)
     }
 });
+
 oppContainer.addEventListener('click', function (e) {
     operator = e.target.innerHTML
 });
@@ -24,6 +25,7 @@ equal.addEventListener('click', () => {
 
         operate(firstNumber, operator, secondNumber)
 });
+
 function addition(a, b) {
     return sum = a + b
 }
@@ -38,18 +40,23 @@ function multiplication(a, b) {
 }
 function operate(firstNum, opp, secondNum) {
     if (opp == "+")
-        finalValue=(addition(firstNum, secondNum))
+        finalValue = (addition(firstNum, secondNum))
     if (opp == "-")
         finalValue = subtraction(firstNum, secondNum)
     if (opp == "/")
         finalValue = division(firstNum, secondNum)
     if (opp == "*")
         finalValue = multiplication(firstNum, secondNum)
-
+}
+function reset() {
+    firstNumber = ""
+    operator = undefined
+    secondNumber = ""
+    finalValue = undefined
 }
 function doStuff() {
-    console.log("firstNumber " + firstNumber );
+    console.log("firstNumber " + firstNumber);
     console.log("secondNumber " + secondNumber);
     console.log("finalValue " + finalValue)
 }
-setInterval(doStuff, 5000);
+setInterval(doStuff, 3000);
