@@ -5,16 +5,22 @@ let finalValue = undefined
 const numContainer = document.querySelector('.digit-buttons');
 const oppContainer = document.querySelector('.operator-buttons')
 const equal = document.querySelector('#equal')
-numContainer.addEventListener('click', function (e) {
-    if ((!operator)) {
-        firstNumber = firstNumber + e.target.innerHTML
-        firstNumber = parseInt(firstNumber)
-    }
-    else {
-        secondNumber = secondNumber + e.target.innerHTML
-        secondNumber = parseInt(secondNumber)
-    }
-});
+handleNumbers()
+handleOperators()
+handleEqual()
+function handleNumbers() {
+    numContainer.addEventListener('click', function (e) {
+        if ((!operator)) {
+            firstNumber = firstNumber + e.target.innerHTML
+            firstNumber = parseInt(firstNumber)
+        }
+        else {
+            secondNumber = secondNumber + e.target.innerHTML
+            secondNumber = parseInt(secondNumber)
+        }
+    });
+}
+function handleOperators(){
 oppContainer.addEventListener('click', function (e) {
     if ((!operator) && (firstNumber !== "")) {
         operator = e.target.innerHTML
@@ -23,14 +29,14 @@ oppContainer.addEventListener('click', function (e) {
         operate(firstNumber, operator, secondNumber)
         operator = e.target.innerHTML
     }
-});
-
+});}
+function handleEqual(){
 equal.addEventListener('click', () => {
     if ((firstNumber !== "") && (secondNumber !== "")) {
         operate(firstNumber, operator, secondNumber)
         operator = undefined;
     }
-});
+});}
 
 function addition(a, b) {
     return sum = a + b;
