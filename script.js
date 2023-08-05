@@ -30,20 +30,43 @@ function handleNumbers() {
     numContainer.addEventListener('click', function (e) {
         if ((!operator)) {
             firstNumber = firstNumber + e.target.innerHTML
-            firstNumber = parseInt(firstNumber)
+            // firstNumber = Number(firstNumber)
         }
         else {
             secondNumber = secondNumber + e.target.innerHTML
-            secondNumber = parseInt(secondNumber)
+            //secondNumber = Number(secondNumber)
         }
     });
 }
+
+function addDot(dot) {
+
+    if ((!operator)) {
+        if (firstNumber.includes('.'))
+            return;
+        if (firstNumber === "")
+            firstNumber = "0" + dot
+        else
+            firstNumber = firstNumber + dot
+    }
+    else {
+        if (secondNumber.includes('.'))
+            return;
+        if (secondNumber === "")
+            secondNumber = "0" + dot
+        else
+            secondNumber = secondNumber + dot
+    }
+}
+
 function handleOperators() {
     oppContainer.addEventListener('click', function (e) {
         if ((!operator) && (firstNumber !== "")) {
             operator = e.target.innerHTML
         }
         if ((firstNumber !== "") && (secondNumber !== "") && (operator !== undefined)) {
+            firstNumber = Number(firstNumber)
+            secondNumber = Number(secondNumber)
             operate(firstNumber, operator, secondNumber)
             operator = e.target.innerHTML
         }
@@ -52,6 +75,8 @@ function handleOperators() {
 function handleEqual() {
     equal.addEventListener('click', () => {
         if ((firstNumber !== "") && (secondNumber !== "")) {
+            firstNumber = Number(firstNumber)
+            secondNumber = Number(secondNumber)
             operate(firstNumber, operator, secondNumber)
             operator = undefined;
             display.innerHTML = finalValue
@@ -77,6 +102,7 @@ function multiplication(a, b) {
     return product = a * b;
 }
 function operate(firstNum, opp, secondNum) {
+
     if (opp === "+") {
         finalValue = (addition(firstNum, secondNum))
         firstNumber = finalValue
@@ -107,10 +133,11 @@ function reset() {
     secondNumber = ""
     finalValue = undefined
 }
-function doStuff() {
-    console.log("firstNumber " + firstNumber);
-    console.log("secondNumber " + secondNumber);
-    console.log("finalValue " + finalValue);
-    console.log("operator " + operator);
-}
-setInterval(doStuff, 3000);
+// function doStuff() {
+//     console.log("firstNumber " + firstNumber);
+//     console.log("secondNumber " + secondNumber);
+//     console.log("finalValue " + finalValue);
+//     console.log("operator " + operator);
+//     console.log({numContainer})
+// }
+// setInterval(doStuff, 3000);
