@@ -7,13 +7,34 @@ const oppContainer = document.querySelector('.operator-buttons')
 const equal = document.querySelector('#equal')
 const body = document.querySelector('body')
 const display = document.querySelector('.display')
+const button = document.querySelector('.button')
 handleNumbers()
 handleOperators()
 handleEqual()
 handleDisplay()
+// test1()
+// function test1() {
+//     button.addEventListener('click', () => {
+//         if (firstNumber !== "" || secondNumber !== "") {
+//             // display.getAttribute('padding-top')
+//             display.style.removeProperty('padding-top');
 
+//             display.style.removeProperty('border-radius');
+//             // display.style.removeProperty('padding-top');
+//             // display.style.removeProperty('padding-top');
+//             // display.style.removeProperty('padding-top');
+
+//             // body.style.paddingTop=`20px`
+//         }
+//     })
+// }
 function handleDisplay() {
     body.addEventListener('click', () => {
+        if (firstNumber !== "" || secondNumber !== "") {
+                        // display.getAttribute('padding-top')
+                        display.style.removeProperty('padding-top');
+                        display.style.border = `thin solid rgb(65, 21, 21)`
+                    }
         if ((operator === undefined) && (secondNumber === "") && (finalValue === undefined)) {
             display.innerHTML = firstNumber
         }
@@ -28,6 +49,9 @@ function handleDisplay() {
 
 function handleNumbers() {
     numContainer.addEventListener('click', function (e) {
+
+        if (e.target.innerHTML === ".")
+            return;
         if ((!operator)) {
             firstNumber = firstNumber + e.target.innerHTML
             // firstNumber = Number(firstNumber)

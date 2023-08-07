@@ -1,0 +1,98 @@
+body {
+    background-color: #1f2937;
+    font-family: 'Roboto', sans-serif;
+}
+
+.display {
+    background-color: rgb(190, 85, 71);
+    color: white;
+    padding-top: 68px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 40px;
+
+}
+
+.calculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    flex-direction: column;
+    column-gap: 15px;
+}
+
+.sub-container {
+    border-color: rgb(190, 85, 71);
+    border-radius: 10px;
+    border-style: solid;
+    padding: 5px;
+    padding-top: 5px;
+}
+
+.main-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.clear-equal {
+    display: flex;
+    column-gap: 5px;
+    margin-bottom: 15px;
+}
+
+.digit-buttons {
+    display: grid;
+    grid-template-columns: 80px 80px 80px;
+}
+
+.operator-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.operator-buttons,
+.calculator,
+.digit-buttons {
+    row-gap: 20px;
+    column-gap: 15px;
+}
+
+#dot {
+    margin-left: 95px;
+}
+
+#zero {
+    width: 185px;
+}
+
+#clear {
+    width: 280px;
+}
+
+.button {
+    background-color: skyblue;
+    color: #1f2937;
+    border-color: skyblue;
+    border-radius: 50px;
+    border-style: solid;
+    width: 90px;
+    height: 55px;
+    font-size: 20px;
+}
+
+.operator-buttons .button,
+.clear-equal .button {
+    background-color: rgb(255, 171, 185);
+    border-color: rgb(255, 171, 185);
+}
+
+.button:hover {
+    background-color: rgb(153, 122, 63);
+    border-color: rgb(151, 114, 45);
+}

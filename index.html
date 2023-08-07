@@ -4,33 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
-    <link src="style.css">
+    <link rel="stylesheet" href="style.css">
     <title>calaa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <div class="display"></div>
-    <div class="digit-buttons">
-        <button class="button">1</button>
-        <button class="button">2</button>
-        <button class="button">3</button>
-        <button class="button">4</button>
-        <button class="button">5</button>
-        <button class="button">6</button>
-        <button class="button">7</button>
-        <button class="button">8</button>
-        <button class="button">9</button>
-        <button class="button">0</button>
+    <div class="calculator">
+        <div class="sub-container">
+            <div class="display"></div>
+            <div class="clear-equal">
+                <button class="button" onclick="reset()" id="clear">clear</button>
+                <button class="button" id="equal">=</button>
+            </div>
+            <div class="main-container">
+                <div class="digit-container">
+                    <div class="digit-buttons">
+                        <button class="button" id="one">1</button>
+                        <button class="button" id="two">2</button>
+                        <button class="button" id="three">3</button>
+                        <button class="button" id="four">4</button>
+                        <button class="button" id="five">5</button>
+                        <button class="button" id="six">6</button>
+                        <button class="button" id="seven">7</button>
+                        <button class="button" id="eight">8</button>
+                        <button class="button" id="nine">9</button>
+                        <button class="button" id="zero">0</button>
+                        <button class="button" onclick="addDot('.')" id="dot">.</button>
+                    </div>
+                </div>
+
+                <div class="operator-buttons">
+                    <button class="button">+</button>
+                    <button class="button">-</button>
+                    <button class="button">*</button>
+                    <button class="button">/</button>
+                </div>
+            </div>
+            <!-- <div class="clear-equal">
+                <button class="button" onclick="reset()" id="clear">clear</button>
+                <button class="button" id="equal">=</button>
+            </div> -->
+        </div>
     </div>
-    <div class="operator-buttons">
-        <button class="button">+</button>
-        <button class="button">-</button>
-        <button class="button">/</button>
-        <button class="button">*</button>
-    </div>
-    <button class="button" onclick="reset()">clear</button>
-    <button class="button" id="equal">=</button>
     <script src="script.js" async defer></script>
 </body>
 
