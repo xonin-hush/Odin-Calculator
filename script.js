@@ -12,37 +12,21 @@ handleNumbers()
 handleOperators()
 handleEqual()
 handleDisplay()
-// test1()
-// function test1() {
-//     button.addEventListener('click', () => {
-//         if (firstNumber !== "" || secondNumber !== "") {
-//             // display.getAttribute('padding-top')
-//             display.style.removeProperty('padding-top');
-
-//             display.style.removeProperty('border-radius');
-//             // display.style.removeProperty('padding-top');
-//             // display.style.removeProperty('padding-top');
-//             // display.style.removeProperty('padding-top');
-
-//             // body.style.paddingTop=`20px`
-//         }
-//     })
-// }
 function handleDisplay() {
     body.addEventListener('click', () => {
-        if (firstNumber !== "" || secondNumber !== "") {
-                        // display.getAttribute('padding-top')
-                        display.style.removeProperty('padding-top');
-                        display.style.border = `thin solid rgb(65, 21, 21)`
-                    }
         if ((operator === undefined) && (secondNumber === "") && (finalValue === undefined)) {
             display.innerHTML = firstNumber
+
         }
         if ((operator !== undefined) && (firstNumber !== "") && (secondNumber === "")) {
             display.innerHTML = operator
         }
         if ((operator !== undefined) && (firstNumber !== "") && (secondNumber !== "")) {
             display.innerHTML = secondNumber
+        }
+        if ((display.innerHTML !== undefined) && (display.innerHTML !== "")) {
+            display.style.paddingTop = `20px`
+            console.log('hi')
         }
     })
 }
@@ -104,6 +88,7 @@ function handleEqual() {
             operate(firstNumber, operator, secondNumber)
             operator = undefined;
             display.innerHTML = finalValue
+
         }
     });
 }
@@ -115,8 +100,10 @@ function subtraction(a, b) {
     return sub = a - b;
 }
 function division(a, b) {
-    if (b === 0)
-        alert("bruh")
+    if (b === 0) {
+        alert("Can not divide by zero, YET.")
+        return firstNumber;
+    }
     else {
         return product = a / b;
     }
@@ -156,6 +143,8 @@ function reset() {
     operator = undefined
     secondNumber = ""
     finalValue = undefined
+    display.innerHTML = ""
+    display.style.paddingTop = `68px`
 }
 // function doStuff() {
 //     console.log("firstNumber " + firstNumber);
