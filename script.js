@@ -8,12 +8,12 @@ const equal = document.querySelector('#equal')
 const body = document.querySelector('body')
 const display = document.querySelector('.display')
 const button = document.querySelector('.button')
-const operatorNodeList = document.querySelectorAll('.operator-buttons')
+const operatorNodeList = document.querySelectorAll('.operator-buttons .button')
 handleNumbers()
 handleOperators()
 handleEqual()
 handleDisplay()
-// displayCurrentOperator()
+displayCurrentOperator()
 function handleDisplay() {
     body.addEventListener('click', () => {
         if ((operator === undefined) && (secondNumber === "") && (finalValue === undefined)) {
@@ -29,31 +29,28 @@ function handleDisplay() {
             display.innerHTML = firstNumber
     })
 }
-// function displayCurrentOperator() {
-//     bruh=operatorNodeList[1]
-//     oppContainer.addEventListener('click', ()=> {
-//         bruh.style.backgroundColor='white'
-
-//         console.log(bruh)
-//         if (operator === "+") {
-
-//         }
-//         if (operator === "-") {
-
-//         }
-//         if (operator === "*") {
-
-//         }
-//         if (operator === "/") {
-
-//         }
-//     });
-// }
+function displayCurrentOperator() {
+    console.log(operatorNodeList)
+    oppContainer.addEventListener('click', () => {
+        resetOperatorColor()
+        if (operator === "+") {
+            operatorNodeList[0].style.borderColor = 'white'
+        }
+        if (operator === "-") {
+            operatorNodeList[1].style.borderColor = 'white'
+        }
+        if (operator === "*") {
+            operatorNodeList[2].style.borderColor = 'white'
+        }
+        if (operator === "/") {
+            operatorNodeList[3].style.borderColor = 'white'
+        }
+    });
+}
 function handleNumbers() {
-    
+
     numContainer.addEventListener('click', function (e) {
-        let checkButtons=e.target.innerHTML
-        console.log(checkButtons)
+        let checkButtons = e.target.innerHTML
         if (checkButtons.includes("button"))
             return;
         if (e.target.innerHTML === ".")
@@ -91,7 +88,6 @@ function handleOperators() {
     oppContainer.addEventListener('click', function (e) {
         if ((!operator) && (firstNumber !== "")) {
             operator = e.target.innerHTML
-            console.log(e.target.innerHTML)
         }
         if ((firstNumber !== "") && (secondNumber !== "") && (operator !== undefined)) {
             firstNumber = Number(firstNumber)
@@ -109,7 +105,7 @@ function handleEqual() {
             operate(firstNumber, operator, secondNumber)
             operator = undefined;
             display.innerHTML = finalValue
-
+            resetOperatorColor()
         }
     });
 }
@@ -166,6 +162,12 @@ function reset() {
     finalValue = undefined
     display.innerHTML = ""
     display.style.paddingTop = `68px`
+    resetOperatorColor()
+}
+function resetOperatorColor(){
+    for (let i = 0; i < operatorNodeList.length; i++) {
+        operatorNodeList[i].style.borderColor = 'rgb(255, 171, 185)'
+    }
 }
 // function doStuff() {
 //     console.log("firstNumber " + firstNumber);
