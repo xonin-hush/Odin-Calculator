@@ -10,6 +10,10 @@ const display = document.querySelector('.display')
 const button = document.querySelector('.button')
 const operatorNodeList = document.querySelectorAll('.operator-buttons .button')
 let test = null
+window.addEventListener("keydown", (e) =>
+  e.key === "/" ? e.preventDefault() : null
+);
+
 handleNumbers()
 handleOperators()
 handleEqual()
