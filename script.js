@@ -10,6 +10,7 @@ const body = document.querySelector('body')
 const display = document.querySelector('.display')
 const button = document.querySelector('.button')
 const operatorNodeList = document.querySelectorAll('.operator-buttons .button')
+//prevents browser from opening search bar when / is pressed on keyboard
 window.addEventListener("keydown", (e) =>
     e.key === "/" ? e.preventDefault() : null
 );
