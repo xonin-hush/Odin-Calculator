@@ -2,6 +2,7 @@ let firstNumber = ""
 let operator = undefined
 let secondNumber = ""
 let finalValue = undefined
+let pressedKey = null
 const numContainer = document.querySelector('.digit-buttons');
 const oppContainer = document.querySelector('.operator-buttons')
 const equal = document.querySelector('#equal')
@@ -9,18 +10,15 @@ const body = document.querySelector('body')
 const display = document.querySelector('.display')
 const button = document.querySelector('.button')
 const operatorNodeList = document.querySelectorAll('.operator-buttons .button')
-let pressedKey = null
 window.addEventListener("keydown", (e) =>
-  e.key === "/" ? e.preventDefault() : null
+    e.key === "/" ? e.preventDefault() : null
 );
-
 handleNumbers()
 handleOperators()
 handleEqual()
 handleDisplay()
 handleKeyboard()()
 function handleDisplay() {
-    // body.addEventListener('click', () => {
     if ((operator === undefined) && (secondNumber === "") && (finalValue === undefined)) {
         display.innerHTML = firstNumber
     }
@@ -33,10 +31,8 @@ function handleDisplay() {
     if ((operator !== undefined) && (firstNumber == finalValue) && (secondNumber === "") && (firstNumber !== ""))
         display.innerHTML = firstNumber
     displayCurrentOperator()
-    // })
 }
 function displayCurrentOperator() {
-    // oppContainer.addEventListener('click', () => {
     resetOperatorColor()
     if (operator === "+") {
         operatorNodeList[0].style.borderColor = 'white'
@@ -53,10 +49,8 @@ function displayCurrentOperator() {
     if (operator === undefined) {
         return;
     }
-    // });
 }
 function handleNumbers() {
-
     numContainer.addEventListener('click', function (e) {
         let checkButtons = e.target.innerHTML
         if (checkButtons.includes("button"))
@@ -74,7 +68,6 @@ function handleNumbers() {
 }
 
 function addDot(dot) {
-
     if ((!operator)) {
         if (firstNumber.includes('.'))
             return;
@@ -100,7 +93,6 @@ function handleOperators() {
         operatorLogic(e)
         handleDisplay()
     });
-
 }
 function operatorLogic(e) {
     if ((!operator) && (firstNumber !== "")) {
@@ -122,8 +114,6 @@ function handleEqual() {
         if (pressedButton === "=")
             equalLogic()
     });
-
-
     function equalLogic() {
         if ((firstNumber !== "") && (secondNumber !== "")) {
             firstNumber = Number(firstNumber)
@@ -135,9 +125,6 @@ function handleEqual() {
         }
     }
 }
-
-
-
 function addition(a, b) {
     return sum = a + b;
 }
@@ -152,7 +139,6 @@ function division(a, b) {
     else {
         return product = a / b;
     }
-
 }
 function multiplication(a, b) {
     return product = a * b;
@@ -163,13 +149,11 @@ function operate(firstNum, opp, secondNum) {
         finalValue = (addition(firstNum, secondNum))
         firstNumber = finalValue.toString()
         secondNumber = ""
-
     }
     if (opp === "-") {
         finalValue = subtraction(firstNum, secondNum)
         firstNumber = finalValue.toString()
         secondNumber = ""
-
     }
     if (opp === "/") {
         finalValue = division(firstNum, secondNum)
@@ -180,7 +164,6 @@ function operate(firstNum, opp, secondNum) {
         finalValue = multiplication(firstNum, secondNum)
         firstNumber = finalValue.toString()
         secondNumber = ""
-
     }
     handleDisplay()
 }
@@ -198,14 +181,6 @@ function resetOperatorColor() {
         operatorNodeList[i].style.borderColor = 'rgb(255, 171, 185)'
     }
 }
-// function doStuff() {
-//     console.log("firstNumber " + firstNumber);
-//     console.log("pressedKey " + pressedKey);
-//     console.log("secondNumber " + secondNumber);
-//     // console.log("finalValue " + finalValue);
-//     console.log("operator " + operator);
-// }
-// setInterval(doStuff, 3000)
 function handleKeyboard() {
     window.addEventListener('keyup', function (e) {
         pressedKey = document.querySelector(`button[data-key="${e.key}"]`)
