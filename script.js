@@ -9,7 +9,7 @@ const body = document.querySelector('body')
 const display = document.querySelector('.display')
 const button = document.querySelector('.button')
 const operatorNodeList = document.querySelectorAll('.operator-buttons .button')
-let test = null
+let pressedKey = null
 window.addEventListener("keydown", (e) =>
   e.key === "/" ? e.preventDefault() : null
 );
@@ -18,8 +18,7 @@ handleNumbers()
 handleOperators()
 handleEqual()
 handleDisplay()
-
-test1()
+handleKeyboard()()
 function handleDisplay() {
     // body.addEventListener('click', () => {
     if ((operator === undefined) && (secondNumber === "") && (finalValue === undefined)) {
@@ -116,11 +115,11 @@ function operatorLogic(e) {
 }
 function handleEqual() {
     window.addEventListener('keyup', function (e) {
-        let buttonClicked = null
-        buttonClicked = document.querySelector(`button[data-key="${e.key}"]`)
-        buttonClicked = buttonClicked.textContent
-        console.log(buttonClicked)
-        if (buttonClicked === "=")
+        let pressedButton = null
+        pressedButton = document.querySelector(`button[data-key="${e.key}"]`)
+        pressedButton = pressedButton.textContent
+        console.log(pressedButton)
+        if (pressedButton === "=")
             equalLogic()
     });
 
@@ -199,32 +198,32 @@ function resetOperatorColor() {
         operatorNodeList[i].style.borderColor = 'rgb(255, 171, 185)'
     }
 }
-function doStuff() {
-    console.log("firstNumber " + firstNumber);
-    console.log("test " + test);
-    console.log("secondNumber " + secondNumber);
-    // console.log("finalValue " + finalValue);
-    console.log("operator " + operator);
-}
-setInterval(doStuff, 3000)
-function test1() {
+// function doStuff() {
+//     console.log("firstNumber " + firstNumber);
+//     console.log("pressedKey " + pressedKey);
+//     console.log("secondNumber " + secondNumber);
+//     // console.log("finalValue " + finalValue);
+//     console.log("operator " + operator);
+// }
+// setInterval(doStuff, 3000)
+function handleKeyboard() {
     window.addEventListener('keyup', function (e) {
-        test = document.querySelector(`button[data-key="${e.key}"]`)
-        test = test.textContent
-        if ((test === null) || (test === "="))
+        pressedKey = document.querySelector(`button[data-key="${e.key}"]`)
+        pressedKey = pressedKey.textContent
+        if ((pressedKey === null) || (pressedKey === "="))
             return;
-        if ((test === "*") || (test === "+") || (test === "-") || (test === "/"))
-            operatorLogic(test)
+        if ((pressedKey === "*") || (pressedKey === "+") || (pressedKey === "-") || (pressedKey === "/"))
+            operatorLogic(pressedKey)
         else {
-            if (test === ".") {
+            if (pressedKey === ".") {
                 addDot('.')
                 return;
             }
             if ((!operator)) {
-                firstNumber = firstNumber + test
+                firstNumber = firstNumber + pressedKey
             }
             else {
-                secondNumber = secondNumber + test
+                secondNumber = secondNumber + pressedKey
             }
         }
         handleDisplay()
