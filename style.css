@@ -4,7 +4,7 @@ body {
 }
 
 .display {
-    background-color: rgb(190, 85, 71);
+    background-color: rgb(253, 193, 82);
     color: white;
     padding-top: 68px;
     padding-bottom: 15px;
@@ -28,7 +28,7 @@ body {
 }
 
 .sub-container {
-    border-color: rgb(190, 85, 71);
+    border-color: rgb(253, 193, 82);
     border-radius: 10px;
     border-style: solid;
     padding: 5px;
@@ -95,6 +95,6 @@ body {
 }
 
 .button:hover {
-    background-color: rgb(177, 122, 131);
-    border-color: rgb(177, 122, 131);
+    background-color: rgb(151, 114, 45);
+    border-color: rgb(151, 114, 45);
 }
