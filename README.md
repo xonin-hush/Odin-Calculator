@@ -1,5 +1,5 @@
 
-# [Odin-Calculator](https://xonin-hush.github.io/Calculator/)
+# [Odin-Calculator](https://xonin-hush.github.io/Odin-Calculator/)
 The last project on "the odin project" foundations course, it demonstrates almost all the essentials that have been shown in this course from HTML, CSS to JavaScript [The Odin Project-Foundations](https://www.theodinproject.com/paths/foundations/courses/foundations).
 
 ## Links
