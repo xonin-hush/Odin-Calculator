@@ -17,7 +17,25 @@ handleNumbers()
 handleOperators()
 handleEqual()
 handleDisplay()
-handleKeyboard()()
+handleKeyboard()
+//decides where user's input gets stored
+function handleNumbers() {
+    numContainer.addEventListener('click', function (e) {
+        let checkButtons = e.target.innerHTML
+        if (checkButtons.includes("button"))
+            return;
+        if (e.target.innerHTML === ".")
+            return;
+        if ((!operator)) {
+            firstNumber = firstNumber + e.target.innerHTML
+        }
+        else {
+            secondNumber = secondNumber + e.target.innerHTML
+        }
+        handleDisplay()
+    });
+}
+//Update display state/innerHTML content
 function handleDisplay() {
     if ((operator === undefined) && (secondNumber === "") && (finalValue === undefined)) {
         display.innerHTML = firstNumber
@@ -32,6 +50,12 @@ function handleDisplay() {
         display.innerHTML = firstNumber
     displayCurrentOperator()
 }
+function resetOperatorColor() {
+    for (let i = 0; i < operatorNodeList.length; i++) {
+        operatorNodeList[i].style.borderColor = 'rgb(255, 171, 185)'
+    }
+}
+//change border color of operator buttons when chosen
 function displayCurrentOperator() {
     resetOperatorColor()
     if (operator === "+") {
@@ -50,23 +74,24 @@ function displayCurrentOperator() {
         return;
     }
 }
-function handleNumbers() {
-    numContainer.addEventListener('click', function (e) {
-        let checkButtons = e.target.innerHTML
-        if (checkButtons.includes("button"))
-            return;
-        if (e.target.innerHTML === ".")
-            return;
-        if ((!operator)) {
-            firstNumber = firstNumber + e.target.innerHTML
-        }
-        else {
-            secondNumber = secondNumber + e.target.innerHTML
-        }
+function handleOperators() {
+    oppContainer.addEventListener('click', function (e) {
+        e = e.target.innerHTML
+        operatorLogic(e)
         handleDisplay()
     });
 }
-
+function operatorLogic(e) {
+    if ((!operator) && (firstNumber !== "")) {
+        operator = e
+    }
+    if ((firstNumber !== "") && (secondNumber !== "") && (operator !== undefined)) {
+        firstNumber = Number(firstNumber)
+        secondNumber = Number(secondNumber)
+        operate(firstNumber, operator, secondNumber)
+        operator = e
+    }
+}
 function addDot(dot) {
     if ((!operator)) {
         if (firstNumber.includes('.'))
@@ -86,31 +111,12 @@ function addDot(dot) {
     }
     handleDisplay()
 }
-
-function handleOperators() {
-    oppContainer.addEventListener('click', function (e) {
-        e = e.target.innerHTML
-        operatorLogic(e)
-        handleDisplay()
-    });
-}
-function operatorLogic(e) {
-    if ((!operator) && (firstNumber !== "")) {
-        operator = e
-    }
-    if ((firstNumber !== "") && (secondNumber !== "") && (operator !== undefined)) {
-        firstNumber = Number(firstNumber)
-        secondNumber = Number(secondNumber)
-        operate(firstNumber, operator, secondNumber)
-        operator = e
-    }
-}
+//
 function handleEqual() {
     window.addEventListener('keyup', function (e) {
         let pressedButton = null
         pressedButton = document.querySelector(`button[data-key="${e.key}"]`)
         pressedButton = pressedButton.textContent
-        console.log(pressedButton)
         if (pressedButton === "=")
             equalLogic()
     });
@@ -125,48 +131,6 @@ function handleEqual() {
         }
     }
 }
-function addition(a, b) {
-    return sum = a + b;
-}
-function subtraction(a, b) {
-    return sub = a - b;
-}
-function division(a, b) {
-    if (b === 0) {
-        alert("Can not divide by zero, YET.")
-        return firstNumber;
-    }
-    else {
-        return product = a / b;
-    }
-}
-function multiplication(a, b) {
-    return product = a * b;
-}
-function operate(firstNum, opp, secondNum) {
-
-    if (opp === "+") {
-        finalValue = (addition(firstNum, secondNum))
-        firstNumber = finalValue.toString()
-        secondNumber = ""
-    }
-    if (opp === "-") {
-        finalValue = subtraction(firstNum, secondNum)
-        firstNumber = finalValue.toString()
-        secondNumber = ""
-    }
-    if (opp === "/") {
-        finalValue = division(firstNum, secondNum)
-        firstNumber = finalValue.toString()
-        secondNumber = ""
-    }
-    if (opp === "*") {
-        finalValue = multiplication(firstNum, secondNum)
-        firstNumber = finalValue.toString()
-        secondNumber = ""
-    }
-    handleDisplay()
-}
 function reset() {
     firstNumber = ""
     operator = undefined
@@ -175,11 +139,6 @@ function reset() {
     display.innerHTML = ""
     display.style.paddingTop = `68px`
     resetOperatorColor()
-}
-function resetOperatorColor() {
-    for (let i = 0; i < operatorNodeList.length; i++) {
-        operatorNodeList[i].style.borderColor = 'rgb(255, 171, 185)'
-    }
 }
 function handleKeyboard() {
     window.addEventListener('keyup', function (e) {
@@ -203,4 +162,45 @@ function handleKeyboard() {
         }
         handleDisplay()
     });
+}
+function addition(a, b) {
+    return sum = a + b;
+}
+function subtraction(a, b) {
+    return sub = a - b;
+}
+function division(a, b) {
+    if (b === 0) {
+        alert("Can not divide by zero, YET.")
+        return firstNumber;
+    }
+    else {
+        return product = a / b;
+    }
+}
+function multiplication(a, b) {
+    return product = a * b;
+}
+function operate(firstNum, opp, secondNum) {
+    if (opp === "+") {
+        finalValue = (addition(firstNum, secondNum))
+        firstNumber = finalValue.toString()
+        secondNumber = ""
+    }
+    if (opp === "-") {
+        finalValue = subtraction(firstNum, secondNum)
+        firstNumber = finalValue.toString()
+        secondNumber = ""
+    }
+    if (opp === "/") {
+        finalValue = division(firstNum, secondNum)
+        firstNumber = finalValue.toString()
+        secondNumber = ""
+    }
+    if (opp === "*") {
+        finalValue = multiplication(firstNum, secondNum)
+        firstNumber = finalValue.toString()
+        secondNumber = ""
+    }
+    handleDisplay()
 }
