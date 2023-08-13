@@ -21,30 +21,30 @@
             </div>
             <div class="clear-equal">
                 <button class="button" onclick="reset()" id="clear">clear</button>
-                <button class="button" id="equal">=</button>
+                <button class="button" id="equal" onclick="handleEqual()" data-key="=">=</button>
             </div>
             <div class="main-container">
                 <div class="digit-container">
                     <div class="digit-buttons">
-                        <button class="button" id="one">1</button>
-                        <button class="button" id="two">2</button>
-                        <button class="button" id="three">3</button>
-                        <button class="button" id="four">4</button>
-                        <button class="button" id="five">5</button>
-                        <button class="button" id="six">6</button>
-                        <button class="button" id="seven">7</button>
-                        <button class="button" id="eight">8</button>
-                        <button class="button" id="nine">9</button>
-                        <button class="button" id="zero">0</button>
-                        <button class="button" onclick="addDot('.')" id="dot">.</button>
+                        <button data-key="1" class="button" id="one">1</button>
+                        <button data-key="2" class="button" id="two">2</button>
+                        <button data-key="3" class="button" id="three">3</button>
+                        <button data-key="4" class="button" id="four">4</button>
+                        <button data-key="5" class="button" id="five">5</button>
+                        <button data-key="6" class="button" id="six">6</button>
+                        <button data-key="7" class="button" id="seven">7</button>
+                        <button data-key="8" class="button" id="eight">8</button>
+                        <button data-key="9" class="button" id="nine">9</button>
+                        <button data-key="0" class="button" id="zero">0</button>
+                        <button data-key="." class="button" onclick="addDot('.')" id="dot">.</button>
                     </div>
                 </div>
 
                 <div class="operator-buttons">
-                    <button class="button">+</button>
-                    <button class="button">-</button>
-                    <button class="button">*</button>
-                    <button class="button">/</button>
+                    <button data-key="+" class="button">+</button>
+                    <button data-key="-" class="button">-</button>
+                    <button data-key="*" class="button">*</button>
+                    <button data-key="/" class="button">/</button>
                 </div>
             </div>
             <!-- <div class="clear-equal">

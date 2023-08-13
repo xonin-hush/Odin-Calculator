@@ -9,43 +9,48 @@ const body = document.querySelector('body')
 const display = document.querySelector('.display')
 const button = document.querySelector('.button')
 const operatorNodeList = document.querySelectorAll('.operator-buttons .button')
+let test = null
 handleNumbers()
 handleOperators()
 handleEqual()
 handleDisplay()
-displayCurrentOperator()
+
+test1()
 function handleDisplay() {
-    body.addEventListener('click', () => {
-        if ((operator === undefined) && (secondNumber === "") && (finalValue === undefined)) {
-            display.innerHTML = firstNumber
-        }
-        if ((operator !== undefined) && (firstNumber !== "") && (secondNumber !== "")) {
-            display.innerHTML = secondNumber
-        }
-        if ((display.innerHTML !== undefined) && (display.innerHTML !== "")) {
-            display.style.paddingTop = `20px`
-        }
-        if ((operator !== undefined) && (firstNumber == finalValue) && (secondNumber === "") && (firstNumber !== ""))
-            display.innerHTML = firstNumber
-    })
+    // body.addEventListener('click', () => {
+    if ((operator === undefined) && (secondNumber === "") && (finalValue === undefined)) {
+        display.innerHTML = firstNumber
+    }
+    if ((operator !== undefined) && (firstNumber !== "") && (secondNumber !== "")) {
+        display.innerHTML = secondNumber
+    }
+    if ((display.innerHTML !== undefined) && (display.innerHTML !== "")) {
+        display.style.paddingTop = `20px`
+    }
+    if ((operator !== undefined) && (firstNumber == finalValue) && (secondNumber === "") && (firstNumber !== ""))
+        display.innerHTML = firstNumber
+    displayCurrentOperator()
+    // })
 }
 function displayCurrentOperator() {
-    console.log(operatorNodeList)
-    oppContainer.addEventListener('click', () => {
-        resetOperatorColor()
-        if (operator === "+") {
-            operatorNodeList[0].style.borderColor = 'white'
-        }
-        if (operator === "-") {
-            operatorNodeList[1].style.borderColor = 'white'
-        }
-        if (operator === "*") {
-            operatorNodeList[2].style.borderColor = 'white'
-        }
-        if (operator === "/") {
-            operatorNodeList[3].style.borderColor = 'white'
-        }
-    });
+    // oppContainer.addEventListener('click', () => {
+    resetOperatorColor()
+    if (operator === "+") {
+        operatorNodeList[0].style.borderColor = 'white'
+    }
+    if (operator === "-") {
+        operatorNodeList[1].style.borderColor = 'white'
+    }
+    if (operator === "*") {
+        operatorNodeList[2].style.borderColor = 'white'
+    }
+    if (operator === "/") {
+        operatorNodeList[3].style.borderColor = 'white'
+    }
+    if (operator === undefined) {
+        return;
+    }
+    // });
 }
 function handleNumbers() {
 
@@ -61,6 +66,7 @@ function handleNumbers() {
         else {
             secondNumber = secondNumber + e.target.innerHTML
         }
+        handleDisplay()
     });
 }
 
@@ -82,23 +88,40 @@ function addDot(dot) {
         else
             secondNumber = secondNumber + dot
     }
+    handleDisplay()
 }
 
 function handleOperators() {
     oppContainer.addEventListener('click', function (e) {
-        if ((!operator) && (firstNumber !== "")) {
-            operator = e.target.innerHTML
-        }
-        if ((firstNumber !== "") && (secondNumber !== "") && (operator !== undefined)) {
-            firstNumber = Number(firstNumber)
-            secondNumber = Number(secondNumber)
-            operate(firstNumber, operator, secondNumber)
-            operator = e.target.innerHTML
-        }
+        e = e.target.innerHTML
+        operatorLogic(e)
+        handleDisplay()
     });
+
+}
+function operatorLogic(e) {
+    if ((!operator) && (firstNumber !== "")) {
+        operator = e
+    }
+    if ((firstNumber !== "") && (secondNumber !== "") && (operator !== undefined)) {
+        firstNumber = Number(firstNumber)
+        secondNumber = Number(secondNumber)
+        operate(firstNumber, operator, secondNumber)
+        operator = e
+    }
 }
 function handleEqual() {
-    equal.addEventListener('click', () => {
+    window.addEventListener('keyup', function (e) {
+        let buttonClicked = null
+        buttonClicked = document.querySelector(`button[data-key="${e.key}"]`)
+        buttonClicked = buttonClicked.textContent
+        console.log(buttonClicked)
+        if (buttonClicked === "=")
+            equalLogic()
+    });
+
+
+    function equalLogic() {
         if ((firstNumber !== "") && (secondNumber !== "")) {
             firstNumber = Number(firstNumber)
             secondNumber = Number(secondNumber)
@@ -107,8 +130,10 @@ function handleEqual() {
             display.innerHTML = finalValue
             resetOperatorColor()
         }
-    });
+    }
 }
+
+
 
 function addition(a, b) {
     return sum = a + b;
@@ -154,6 +179,7 @@ function operate(firstNum, opp, secondNum) {
         secondNumber = ""
 
     }
+    handleDisplay()
 }
 function reset() {
     firstNumber = ""
@@ -164,15 +190,39 @@ function reset() {
     display.style.paddingTop = `68px`
     resetOperatorColor()
 }
-function resetOperatorColor(){
+function resetOperatorColor() {
     for (let i = 0; i < operatorNodeList.length; i++) {
         operatorNodeList[i].style.borderColor = 'rgb(255, 171, 185)'
     }
 }
-// function doStuff() {
-//     console.log("firstNumber " + firstNumber);
-//     console.log("secondNumber " + secondNumber);
-//     console.log("finalValue " + finalValue);
-//     console.log("operator " + operator);
-// }
-// setInterval(doStuff, 3000)
+function doStuff() {
+    console.log("firstNumber " + firstNumber);
+    console.log("test " + test);
+    console.log("secondNumber " + secondNumber);
+    // console.log("finalValue " + finalValue);
+    console.log("operator " + operator);
+}
+setInterval(doStuff, 3000)
+function test1() {
+    window.addEventListener('keyup', function (e) {
+        test = document.querySelector(`button[data-key="${e.key}"]`)
+        test = test.textContent
+        if ((test === null) || (test === "="))
+            return;
+        if ((test === "*") || (test === "+") || (test === "-") || (test === "/"))
+            operatorLogic(test)
+        else {
+            if (test === ".") {
+                addDot('.')
+                return;
+            }
+            if ((!operator)) {
+                firstNumber = firstNumber + test
+            }
+            else {
+                secondNumber = secondNumber + test
+            }
+        }
+        handleDisplay()
+    });
+}
