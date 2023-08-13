@@ -3,6 +3,34 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.top {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1a2e4b;
+    padding-left: 300px;
+    padding-right: 300px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+
+}
+
+.header-logo {
+    font-size: 24px;
+    color: rgb(253, 193, 82);
+    font-weight: bold;
+    padding-top: 10px;
+}
+a {
+    list-style-type: none;
+    text-decoration: none;
+    color: rgb(253, 193, 82);
+  }
+  
+  ul {
+    display: flex;
+    gap: 16px;
+    padding-left: 200px;
+  }
 .display {
     background-color: rgb(253, 193, 82);
     color: rgb(37, 37, 37);
@@ -81,7 +109,7 @@ body {
     color: #1f2937;
     border-color: skyblue;
     border-radius: 50px;
-    border-style:solid;
+    border-style: solid;
     border-width: 5px;
     width: 90px;
     height: 55px;
@@ -98,3 +126,12 @@ body {
     background-color: rgb(151, 114, 45);
     border-color: rgb(151, 114, 45);
 }
+.footer {
+    text-align: center;
+    background-color: #1a2e4b;
+    color: white;
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+  }
