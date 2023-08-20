@@ -121,15 +121,16 @@ function handleEqual() {
         if (pressedButton === "=")
             equalLogic()
     });
-    function equalLogic() {
-        if ((firstNumber !== "") && (secondNumber !== "")) {
-            firstNumber = Number(firstNumber)
-            secondNumber = Number(secondNumber)
-            operate(firstNumber, operator, secondNumber)
-            operator = undefined;
-            display.innerHTML = finalValue
-            resetOperatorColor()
-        }
+
+}
+function equalLogic() {
+    if ((firstNumber !== "") && (secondNumber !== "")) {
+        firstNumber = Number(firstNumber)
+        secondNumber = Number(secondNumber)
+        operate(firstNumber, operator, secondNumber)
+        operator = undefined;
+        display.innerHTML = finalValue
+        resetOperatorColor()
     }
 }
 function reset() {
