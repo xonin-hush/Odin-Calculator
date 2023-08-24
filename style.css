@@ -1,6 +1,6 @@
 body {
     background-color: #1f2937;
-    font-family: 'Roboto', sans-serif;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin: 0px;
 }
 
@@ -21,17 +21,19 @@ body {
     font-weight: bold;
     padding-top: 10px;
 }
+
 a {
     list-style-type: none;
     text-decoration: none;
     color: rgb(253, 193, 82);
-  }
-  
-  ul {
+}
+
+ul {
     display: flex;
     gap: 16px;
     padding-left: 200px;
-  }
+}
+
 .display {
     background-color: rgb(253, 193, 82);
     color: rgb(37, 37, 37);
@@ -127,6 +129,7 @@ a {
     background-color: rgb(151, 114, 45);
     border-color: rgb(151, 114, 45);
 }
+
 .footer {
     text-align: center;
     background-color: #1a2e4b;
@@ -135,4 +138,4 @@ a {
     padding-right: 40px;
     padding-bottom: 20px;
     padding-left: 40px;
-  }
+}
